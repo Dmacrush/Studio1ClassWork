@@ -19,7 +19,7 @@ public class PlayerStateManager : MonoBehaviour
         chargeJump = GetComponent<ChargeJump>();
         airborne = GetComponent<AirBorne>();
         transform.position = spawnPoint.position;
-        currentState = chargeJump;
+        currentState = airborne;
     }
     void Update()
     {
