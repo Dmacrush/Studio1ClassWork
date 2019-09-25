@@ -34,8 +34,11 @@ public class AirBorne : PlayerStateBase
 
         if (timer <= maxHoverTime)
         {
-            maxForce = 0;
+            maxForce = 0f;
+            timer = 0f;
         }
+
+
 
         Debug.Log("Hover Time: " + timer);
         

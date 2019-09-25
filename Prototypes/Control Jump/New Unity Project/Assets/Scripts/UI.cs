@@ -12,7 +12,7 @@ public class UI : MonoBehaviour
 
     public void Update()
     {
-        jumpPressure.text = "Charge Jump: " + chargeJump.jumpPressure.ToString();
-        hoverTime.text = "Hover Time: " + airBorne.timer.ToString();
+        jumpPressure.text = "Charge Jump: " + chargeJump.jumpPressure.ToString("F1");
+        hoverTime.text = "Hover Time: " + airBorne.timer.ToString("F1");
     }
 }
