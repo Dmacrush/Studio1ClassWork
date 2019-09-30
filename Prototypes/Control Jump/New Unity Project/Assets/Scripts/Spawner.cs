@@ -5,12 +5,15 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     public Transform player;
-    public GameObject[] enemyPrefabs;
-    public float spawnTime;
+    public GameObject[] EnemyPrefabs;
+    public GameObject[] powerups;
+    public float enemySpawnTime, powerupTimer, resetPowerupTimer;
+   
 
     public PlayerStateManager stateManager;
     private int timesSpawned;
-    public int maxSpawn = 7;
+    public int maxEnemySpawn = 7;
+    public int maxPowerupSpawn = 1;
 
     [SerializeField]
     private float maxX = 70f, minY, maxY = 70f;
@@ -18,38 +21,57 @@ public class Spawner : MonoBehaviour
     
     public void Start()
     {
+
         timesSpawned = 0;
-        int RandomEnemy = Random.Range(1, enemyPrefabs.Length);
-        Instantiate(enemyPrefabs[RandomEnemy], new Vector3(Random.Range(transform.position.x, transform.position.x + maxX), Random.Range(transform.position.y + minY, transform.position.y + maxY), transform.position.z), Quaternion.identity);
-        Instantiate(enemyPrefabs[RandomEnemy], new Vector3(Random.Range(transform.position.x, transform.position.x + maxX), Random.Range(transform.position.y + minY, transform.position.y + maxY), transform.position.z), Quaternion.identity);
-        Instantiate(enemyPrefabs[RandomEnemy], new Vector3(Random.Range(transform.position.x, transform.position.x + maxX), Random.Range(transform.position.y + minY, transform.position.y + maxY), transform.position.z), Quaternion.identity);
-        Instantiate(enemyPrefabs[RandomEnemy], new Vector3(Random.Range(transform.position.x, transform.position.x + maxX), Random.Range(transform.position.y + minY, transform.position.y + maxY), transform.position.z), Quaternion.identity);
-        Instantiate(enemyPrefabs[RandomEnemy], new Vector3(Random.Range(transform.position.x, transform.position.x + maxX), Random.Range(transform.position.y + minY, transform.position.y + maxY), transform.position.z), Quaternion.identity);
-        InvokeRepeating("SpawnEnemies", 0, spawnTime);
         maxX = 70f;
         maxY = 70f;
+        resetPowerupTimer = 30;
+
+
+        int RandomEnemy = Random.Range(1, EnemyPrefabs.Length);
+        Instantiate(EnemyPrefabs[RandomEnemy], new Vector3(Random.Range(transform.position.x, transform.position.x + maxX), Random.Range(transform.position.y + minY, transform.position.y + maxY), transform.position.z), Quaternion.identity);
+        InvokeRepeating("Spawn", 0, enemySpawnTime);
     }
 
-    public void SpawnEnemies()
+    public void Spawn()
     {
-        timesSpawned += 1;
-        if(stateManager.currentState == stateManager.airborne)
-        {
-            timesSpawned = 0;
-        }
-
         float x = Random.Range(transform.position.x, transform.position.x + maxX);
         float y = Random.Range(transform.position.y + minY, transform.position.y + maxY);
         float z = transform.position.z;
-        int RandomEnemy = Random.Range(1, enemyPrefabs.Length);
-
-        if (timesSpawned <= maxSpawn)
-        {
-            Instantiate(enemyPrefabs[RandomEnemy], new Vector3(x, y, z), Quaternion.identity);
-        }
-       
 
         
+        timesSpawned += 1;
+        
+
+        if (stateManager.currentState == stateManager.airborne)
+        {
+            timesSpawned = 0;
+        }
+        
+        if (timesSpawned <= maxEnemySpawn)
+        {
+            powerupTimer += 1;
+            SpawnEnemies(x, y, z);
+        }
+
+        if(powerupTimer >= resetPowerupTimer )
+        {
+            SpawnPowerUp(x, y, z);
+        }
+
+    }
+
+    public void SpawnEnemies(float x, float y, float z)
+    {
+        int RandomEnemy = Random.Range(1, EnemyPrefabs.Length);
+        Instantiate(EnemyPrefabs[RandomEnemy], new Vector3(x, y, z), Quaternion.identity);
+    }
+
+    public void SpawnPowerUp(float x, float y, float z)
+    {
+        int RandomPowerup = Random.Range(1, powerups.Length);
+        Instantiate(powerups[RandomPowerup], new Vector3(x, y, z), Quaternion.identity);
+        powerupTimer = 0;
     }
 
 }
