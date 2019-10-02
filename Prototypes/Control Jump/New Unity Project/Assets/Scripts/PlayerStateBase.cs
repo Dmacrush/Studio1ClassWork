@@ -7,8 +7,7 @@ using UnityEngine;
 public class PlayerStateBase : MonoBehaviour
 {
     public PlayerStateManager stateManager;
-
-
+    
     public virtual void Enter()
     {
 

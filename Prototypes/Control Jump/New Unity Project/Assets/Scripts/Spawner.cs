@@ -12,6 +12,7 @@ public class Spawner : MonoBehaviour
 
     private PlayerStateManager stateManager;
     private int timesSpawned;
+    [Range(0,100)]
     public int maxEnemySpawn = 7;
     public int maxPowerupSpawn = 1;
 
@@ -81,7 +82,7 @@ public class Spawner : MonoBehaviour
         
         while (true)
         {
-            float x = Random.Range(transform.position.x, transform.position.x + maxX);
+            float x = Random.Range(transform.position.x + 5, transform.position.x + maxX);
             float y = Random.Range(transform.position.y + minY, transform.position.y + maxY);
             float z = transform.position.z;
             int RandomEnemy = Random.Range(1, EnemyPrefabs.Length);

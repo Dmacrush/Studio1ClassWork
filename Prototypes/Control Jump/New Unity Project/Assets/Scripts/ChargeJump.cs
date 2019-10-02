@@ -35,7 +35,6 @@ public class ChargeJump : PlayerStateBase
 	    maxJumpPressure = 50f;
         player = GetComponent<PlayerStats>();
         airBorne = GetComponent<AirBorne>();
-        
     }
     public override void Execute()
     {
@@ -67,6 +66,7 @@ public class ChargeJump : PlayerStateBase
                     DecreaseJumpAngle();
                 }
             }
+
             else
             {
                 if (jumpPressure > 0f) 
@@ -79,10 +79,6 @@ public class ChargeJump : PlayerStateBase
                     ChangeStates(GetComponent<AirBorne>());
                 }
             }
-
-            
-
-
         }
         
     }
