@@ -14,7 +14,7 @@ public class ChargeJump : PlayerStateBase
     [SerializeField]
     private float minJump;
     [SerializeField]
-    private int jumpChargeRate = 10;
+    private int jumpChargeRate = 50;
     public float maxJumpPressure;
     private Rigidbody rb;
 
@@ -32,7 +32,7 @@ public class ChargeJump : PlayerStateBase
 	    minJump = 2f;
         minForwardForce = 2f;
         maxForwardForce = 70f;
-	    maxJumpPressure = 10f;
+	    maxJumpPressure = 50f;
         rb = GetComponent<Rigidbody>();
         airBorne = GetComponent<AirBorne>();
         
