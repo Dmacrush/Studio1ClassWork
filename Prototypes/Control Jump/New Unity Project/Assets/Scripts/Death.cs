@@ -14,15 +14,19 @@ public class Death : MonoBehaviour
     private void OnTriggerEnter(Collider collision)
     {
         
-        Debug.Log("Current Lives: " + stateBase.lives);
-        if(collision.gameObject.CompareTag("Death") && stateBase.lives <= 0)
+        Debug.Log("Current Lives: " + PlayerStateBase.lives);
+        if(collision.gameObject.CompareTag("Death") && PlayerStateBase.lives <= 0)
         {
             Scene scene = SceneManager.GetActiveScene(); SceneManager.LoadScene(scene.name);
 
         }
-        else if(collision.gameObject.CompareTag("Death") && stateBase.lives >= 0)
+        else if(collision.gameObject.CompareTag("Death") && PlayerStateBase.lives >= 0)
         {
-            stateBase.lives -= 1;
+            PlayerStateBase.lives -= 1;
+        }
+        else if (PlayerStateBase.lives >= PlayerStateBase.maxLives)
+        {
+            PlayerStateBase.lives = PlayerStateBase.maxLives;
         }
     }
 
@@ -40,7 +44,7 @@ public class Death : MonoBehaviour
             
         }
         
-        if (collision.gameObject.CompareTag("Death") && stateBase.lives <= 0)
+        if (collision.gameObject.CompareTag("Death") && PlayerStateBase.lives <= 0)
         {
             Scene scene = SceneManager.GetActiveScene(); SceneManager.LoadScene(scene.name);
 
@@ -49,7 +53,7 @@ public class Death : MonoBehaviour
     }
     private void TakeDamage()
     {
-        stateBase.lives -= 1;
+        PlayerStateBase.lives -= 1;
         damageTimer = 0f;
     }
 }

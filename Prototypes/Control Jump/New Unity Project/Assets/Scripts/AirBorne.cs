@@ -43,7 +43,7 @@ public class AirBorne : PlayerStateBase
 
 
 
-        Debug.Log("Hover Time: " + timer);
+        //Debug.Log("Hover Time: " + timer);
         
     }
 

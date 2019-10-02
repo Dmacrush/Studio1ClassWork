@@ -6,17 +6,22 @@ public class PUExtraLife : MonoBehaviour
 {
     public PlayerStateBase stateBase;
 
+    public void Awake()
+    {
+        stateBase = FindObjectOfType<PlayerStateBase>();
+    }
+
     public void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            if(stateBase.lives >= stateBase.maxLives)
+            if(PlayerStateBase.lives >= PlayerStateBase.maxLives)
             {
-                stateBase.lives = stateBase.maxLives;
+                PlayerStateBase.lives = PlayerStateBase.maxLives;
             }
             else
             {
-                stateBase.lives += 1;
+                PlayerStateBase.lives += 1;
             }
             Destroy(gameObject);
 
