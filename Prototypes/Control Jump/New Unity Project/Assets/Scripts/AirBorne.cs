@@ -15,9 +15,12 @@ public class AirBorne : PlayerStateBase
     public float resetAngle;
 
     private Vector3 forceVector;
+
+    public PlayerStats player;
     
     private void Start()
     {
+        player = GetComponent<PlayerStats>();
         originalMaxForce = maxForce;
         rb = GetComponent<Rigidbody>();
         chargeJump = GetComponent<ChargeJump>();
@@ -51,9 +54,9 @@ public class AirBorne : PlayerStateBase
     {
         if (Collision.gameObject.CompareTag("Ground"))
         {
+            player.inAir = false;
             chargeJump.onGround = true;
-            chargeJump.forwardForce = chargeJump.minForwardForce;
-            stateManager.ChangeStates(stateManager.chargeJump);
+            stateManager.ChangeStates(GetComponent<ChargeJump>());
 
         }
         

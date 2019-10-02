@@ -55,13 +55,10 @@ public class EnemyMovementUpDown : MonoBehaviour
             facingUp = false;
         }
 
-        if (((facingUp) && (localScale.x < 0)) || ((!facingUp) && (localScale.x > 0)))
-
+        if (((facingUp) && (transform.rotation.x < 0)) || ((!facingUp) && (transform.rotation.x > 180)))
         {
-            localScale.x *= -1;
+            transform.Rotate(180, 0, 0, Space.Self);
         }
-
-        transform.localScale = localScale;
 
     }
 

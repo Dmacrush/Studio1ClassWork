@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class PUIncreaseScoreMultiplier : MonoBehaviour
 {
-    
-    public void Awake()
+    private PlayerStats player;
+    public void Start()
     {
-
-        
+        player = FindObjectOfType<PlayerStats>();
     }
+
     public void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            UI.scoreMultiplier += 1;
+            player.scoreMultiplier += 1;
             Destroy(gameObject);
 
         }

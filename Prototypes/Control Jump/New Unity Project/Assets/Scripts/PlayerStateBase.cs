@@ -8,8 +8,6 @@ public class PlayerStateBase : MonoBehaviour
 {
     public PlayerStateManager stateManager;
 
-    public static int lives = 1;
-    public static int maxLives = 5;
 
     public virtual void Enter()
     {
@@ -19,7 +17,7 @@ public class PlayerStateBase : MonoBehaviour
     {
         
 
-        Debug.Log(lives);
+        //Debug.Log(lives);
     }
     public virtual void Exit()
     {

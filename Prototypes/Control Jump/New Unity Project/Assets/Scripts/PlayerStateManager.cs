@@ -6,20 +6,15 @@ public class PlayerStateManager : MonoBehaviour
 {
     public PlayerStateBase currentState;
 
-    public PlayerStateBase chargeJump;
-    public PlayerStateBase airborne;
-    
-
     private PlayerStateBase previousState;
 
     public Transform spawnPoint;
 
     void Start()
     {
-        chargeJump = GetComponent<ChargeJump>();
-        airborne = GetComponent<AirBorne>();
+        
         transform.position = spawnPoint.position;
-        currentState = airborne;
+        
     }
     void Update()
     {
@@ -31,8 +26,11 @@ public class PlayerStateManager : MonoBehaviour
         previousState = currentState;
         //Debug.Log("Previous State: " + previousState);
         currentState.Exit();
-        newState.Execute();
+
         currentState = newState;
+        newState.Enter();
+        newState.Execute();
+       
         
     }
 }

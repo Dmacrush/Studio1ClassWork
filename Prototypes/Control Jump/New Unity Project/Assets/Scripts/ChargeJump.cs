@@ -16,7 +16,7 @@ public class ChargeJump : PlayerStateBase
     [SerializeField]
     private int jumpChargeRate = 50;
     public float maxJumpPressure;
-    private Rigidbody rb;
+    private PlayerStats player;
 
     
     private AirBorne airBorne;
@@ -33,7 +33,7 @@ public class ChargeJump : PlayerStateBase
         minForwardForce = 2f;
         maxForwardForce = 70f;
 	    maxJumpPressure = 50f;
-        rb = GetComponent<Rigidbody>();
+        player = GetComponent<PlayerStats>();
         airBorne = GetComponent<AirBorne>();
         
     }
@@ -41,7 +41,7 @@ public class ChargeJump : PlayerStateBase
     {
         
         base.Execute();
-        rb.velocity = new Vector3(0,0,0);
+        player.rb.velocity = new Vector3(0,0,0);
         airBorne.maxForce = airBorne.originalMaxForce;
         
         airBorne.timer = 2f;
@@ -72,10 +72,11 @@ public class ChargeJump : PlayerStateBase
                 if (jumpPressure > 0f) 
                 {
                     jumpPressure += + minJump;
-                    rb.velocity = new Vector3(jumpPressure * jumpPressure / forwardForce, jumpPressure, 0f);
+                    player.rb.velocity = new Vector3(jumpPressure * jumpPressure / forwardForce, jumpPressure, 0f);
                     jumpPressure = 0f;
                     onGround = false;
-                    ChangeStates(stateManager.airborne);
+                    player.inAir = true;
+                    ChangeStates(GetComponent<AirBorne>());
                 }
             }
 
@@ -99,13 +100,13 @@ public class ChargeJump : PlayerStateBase
     public void IncreaseJumpAngle()
     {
         forwardForce += 1f;
-        Debug.Log("Forward Force: " + forwardForce);
+        //Debug.Log("Forward Force: " + forwardForce);
     }
 
     public void DecreaseJumpAngle()
     {
         forwardForce = minForwardForce;
-        Debug.Log("Forward Force: " + forwardForce);
+        //Debug.Log("Forward Force: " + forwardForce);
     }
 
     public void ChangeStates(PlayerStateBase stateBase)

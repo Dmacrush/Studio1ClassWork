@@ -7,26 +7,32 @@ using UnityEngine.SceneManagement;
 public class Death : MonoBehaviour
 {
     public PlayerStateBase stateBase;
+    private PlayerStats playerStats;
+
 
     public float damageTimer;
     public float damageTick = 2.0f;
-    
+
+    private void Start()
+    {
+        playerStats = GetComponent<PlayerStats>();
+    }
     private void OnTriggerEnter(Collider collision)
     {
         
-        Debug.Log("Current Lives: " + PlayerStateBase.lives);
-        if(collision.gameObject.CompareTag("Death") && PlayerStateBase.lives <= 0)
+        Debug.Log("Current Lives: " + playerStats.lives);
+        if(collision.gameObject.CompareTag("Death") && playerStats.lives <= 0)
         {
             Scene scene = SceneManager.GetActiveScene(); SceneManager.LoadScene(scene.name);
 
         }
-        else if(collision.gameObject.CompareTag("Death") && PlayerStateBase.lives >= 0)
+        else if(collision.gameObject.CompareTag("Death") && playerStats.lives >= 0)
         {
-            PlayerStateBase.lives -= 1;
+            playerStats.lives -= 1;
         }
-        else if (PlayerStateBase.lives >= PlayerStateBase.maxLives)
+        else if (playerStats.lives >= playerStats.maxLives)
         {
-            PlayerStateBase.lives = PlayerStateBase.maxLives;
+            playerStats.lives = playerStats.maxLives;
         }
     }
 
@@ -44,16 +50,16 @@ public class Death : MonoBehaviour
             
         }
         
-        if (collision.gameObject.CompareTag("Death") && PlayerStateBase.lives <= 0)
+        if (collision.gameObject.CompareTag("Death") && playerStats.lives <= 0)
         {
             Scene scene = SceneManager.GetActiveScene(); SceneManager.LoadScene(scene.name);
 
         }
-        Debug.Log(damageTimer);
+        //Debug.Log(damageTimer);
     }
     private void TakeDamage()
     {
-        PlayerStateBase.lives -= 1;
+        playerStats.lives -= 1;
         damageTimer = 0f;
     }
 }

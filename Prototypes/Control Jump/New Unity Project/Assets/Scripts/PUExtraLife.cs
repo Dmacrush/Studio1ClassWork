@@ -5,23 +5,24 @@ using UnityEngine;
 public class PUExtraLife : MonoBehaviour
 {
     public PlayerStateBase stateBase;
-
+    private PlayerStats player;
     public void Awake()
     {
-        stateBase = FindObjectOfType<PlayerStateBase>();
+        player = FindObjectOfType<PlayerStats>();
+        stateBase = GetComponent<PlayerStateBase>();
     }
 
     public void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            if(PlayerStateBase.lives >= PlayerStateBase.maxLives)
+            if(player.lives >= player.maxLives)
             {
-                PlayerStateBase.lives = PlayerStateBase.maxLives;
+                player.lives = player.maxLives;
             }
             else
             {
-                PlayerStateBase.lives += 1;
+                player.lives += 1;
             }
             Destroy(gameObject);
 

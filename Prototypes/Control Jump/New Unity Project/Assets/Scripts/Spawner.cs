@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    public Transform player;
+    public PlayerStats player;
     public GameObject[] EnemyPrefabs;
     public GameObject[] powerups;
     public float enemySpawnTime, powerupTimer, resetPowerupTimer;
-   
+    public AirBorne airBorne;
 
-    public PlayerStateManager stateManager;
+    private PlayerStateManager stateManager;
     private int timesSpawned;
     public int maxEnemySpawn = 7;
     public int maxPowerupSpawn = 1;
@@ -26,6 +26,8 @@ public class Spawner : MonoBehaviour
         maxX = 70f;
         maxY = 70f;
         resetPowerupTimer = 30;
+        airBorne = GetComponent<AirBorne>();
+        player = FindObjectOfType<PlayerStats>();
 
         StartCoroutine("SpawnEnemy");
         //int RandomEnemy = Random.Range(1, EnemyPrefabs.Length);
@@ -76,7 +78,7 @@ public class Spawner : MonoBehaviour
     */
     IEnumerator SpawnEnemy()
     {
-
+        
         while (true)
         {
             float x = Random.Range(transform.position.x, transform.position.x + maxX);
@@ -88,7 +90,7 @@ public class Spawner : MonoBehaviour
             timesSpawned += 1;
 
 
-            if (stateManager.currentState == stateManager.airborne)
+            if (player.inAir)
             {
                 timesSpawned = 0;
             }

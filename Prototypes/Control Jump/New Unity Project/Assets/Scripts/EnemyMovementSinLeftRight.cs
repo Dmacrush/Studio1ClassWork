@@ -61,13 +61,11 @@ public class EnemyMovementSinLeftRight : MonoBehaviour
             facingRight = false;
         }
 
-        if (((facingRight) && (localScale.x < 0)) || ((!facingRight) && (localScale.x > 0)))
+        if (((facingRight) && (transform.rotation.y < 0)) || ((!facingRight) && (transform.rotation.y > 180)))
 
         {
-            localScale.x *= -1;
+            transform.Rotate(0, 180, 0, Space.Self);
         }
-
-        transform.localScale = localScale;
 
     }
 

@@ -22,7 +22,7 @@ public class EnemyMovementLeftRight : MonoBehaviour
         minLeft = transform.position.x + maxWidth;
         minRight = transform.position.x - maxWidth;
         pos = transform.position;
-        localScale = transform.localScale;
+        
 
     }
 
@@ -55,13 +55,13 @@ public class EnemyMovementLeftRight : MonoBehaviour
             facingRight = false;
         }
 
-        if (((facingRight) && (localScale.x < 0)) || ((!facingRight) && (localScale.x > 0)))
+        if (((facingRight) && (transform.rotation.y < 0)) || ((!facingRight) && (transform.rotation.y > 180)))
 
         {
-            localScale.x *= -1;
+            transform.Rotate(0, 180, 0, Space.Self);
         }
 
-        transform.localScale = localScale;
+        
 
     }
 
