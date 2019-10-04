@@ -10,7 +10,7 @@ public class Spawner : MonoBehaviour
     public float enemySpawnTime, powerupTimer, resetPowerupTimer;
     public AirBorne airBorne;
 
-    private PlayerStateManager stateManager;
+    private StateManager stateManager;
     private int timesSpawned;
     [Range(0,100)]
     public int maxEnemySpawn = 7;

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-public class PlayerStateManager : MonoBehaviour
+public class StateManager : MonoBehaviour
 {
     public PlayerStateBase currentState;
 
