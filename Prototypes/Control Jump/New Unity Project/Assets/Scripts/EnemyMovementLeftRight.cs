@@ -22,10 +22,10 @@ public class EnemyMovementLeftRight : MonoBehaviour
     void Start()
     {
         enemyRb = GetComponent<Rigidbody>();
-        maxWidth = 5f;
+        maxWidth = 7f;
         pos = transform.position;
-        minLeft = transform.position.x + maxWidth;
-        minRight = transform.position.x - maxWidth;
+        minLeft = transform.position.x - maxWidth;
+        minRight = transform.position.x + maxWidth;
         moveSpeed = 5f;
         facingRight = true;
     }
@@ -33,7 +33,6 @@ public class EnemyMovementLeftRight : MonoBehaviour
 
     void Update()
     {
-        
         //enemyRb.velocity = new Vector3(moveSpeed * Time.deltaTime ,transform.position.y, transform.position.z);
         /*
         if (pos.x >= minRight)
@@ -48,8 +47,7 @@ public class EnemyMovementLeftRight : MonoBehaviour
             //moveSpeed = 50f;
         }
         */
-        CheckWhereToFace();
-        
+
         if (facingRight)
         {
             MoveRight();
@@ -58,45 +56,49 @@ public class EnemyMovementLeftRight : MonoBehaviour
         {
             MoveLeft();
         }
+        CheckWhereToFace();
+        
+        
         
     }
 
     void CheckWhereToFace()
     {
-
-        if (pos.x <= minRight)
+        Debug.Log(facingRight);
+        if (pos.x >= minRight)
         {
-            facingRight = true;
-
+            facingRight = false;
+            //moveSpeed = 50f;
 
         }
 
-        else if (pos.x >= minLeft)
+        else if (pos.x <= minLeft)
         {
-            facingRight = false;
+            facingRight = true;
+            //moveSpeed = -50f;
         }        
-        
+        /*
         if (((facingRight) && (transform.rotation.y < 0)) || ((!facingRight) && (transform.rotation.y > 180)))
         {
             transform.Rotate(0, 180, 0, Space.Self);
         }
-        
-        
-
+        */
     }
 
     void MoveRight()
     {
-        //enemyRb.velocity = new Vector3(moveSpeed * Time.deltaTime, transform.position.y, transform.position.z);
-        pos += transform.right * Time.deltaTime * moveSpeed;
-        transform.position = pos + transform.up; 
+        pos += enemyRb.velocity = new Vector3(moveSpeed * Time.deltaTime, transform.position.y, transform.position.z);
+        transform.position = new Vector3(pos.x, transform.position.y, transform.position.z);
+        //pos += transform.right * Time.deltaTime * moveSpeed;
+        //transform.position = pos + transform.up; 
     }
 
     void MoveLeft()
     {
-        //enemyRb.velocity = new Vector3(-moveSpeed * Time.deltaTime, transform.position.y, transform.position.z);
-        pos -= transform.right * Time.deltaTime * moveSpeed;
-        transform.position = pos + transform.up; 
+        pos -= enemyRb.velocity = new Vector3(moveSpeed * Time.deltaTime, transform.position.y, transform.position.z);
+        transform.position = new Vector3(pos.x, transform.position.y, transform.position.z);
+        //pos -= transform.right * Time.deltaTime * moveSpeed;
+        //transform.position = pos + transform.up; 
     }
 
 }

@@ -1356,25 +1356,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3189683134284161060, guid: 8e881d0acab58ea4ab8e5027071f068a,
-        type: 3}
-      propertyPath: m_Constraints
-      value: 124
-      objectReference: {fileID: 0}
     - target: {fileID: 2366612477001117954, guid: 8e881d0acab58ea4ab8e5027071f068a,
         type: 3}
       propertyPath: m_Name
       value: Enemy_FlyingLeftRight
       objectReference: {fileID: 0}
+    - target: {fileID: 3189683134284161060, guid: 8e881d0acab58ea4ab8e5027071f068a,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 124
+      objectReference: {fileID: 0}
     - target: {fileID: 2366612477001118015, guid: 8e881d0acab58ea4ab8e5027071f068a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 15.566414
+      value: 59
       objectReference: {fileID: 0}
     - target: {fileID: 2366612477001118015, guid: 8e881d0acab58ea4ab8e5027071f068a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.39
+      value: 4.92
       objectReference: {fileID: 0}
     - target: {fileID: 2366612477001118015, guid: 8e881d0acab58ea4ab8e5027071f068a,
         type: 3}

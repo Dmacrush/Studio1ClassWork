@@ -4,9 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 public class StateManager : MonoBehaviour
 {
-    public PlayerStateBase currentState;
+    public StateBase currentState;
 
-    private PlayerStateBase previousState;
+    private StateBase previousState;
 
     public Transform spawnPoint;
 
@@ -21,7 +21,7 @@ public class StateManager : MonoBehaviour
         currentState.Execute();
     }
 
-    public void ChangeStates(PlayerStateBase newState)
+    public void ChangeStates(StateBase newState)
     {
         previousState = currentState;
         //Debug.Log("Previous State: " + previousState);
