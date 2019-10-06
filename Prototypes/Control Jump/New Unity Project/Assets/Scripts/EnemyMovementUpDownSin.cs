@@ -20,6 +20,8 @@ public class EnemyMovementUpDownSin : MonoBehaviour
     private float minUp;
     private float minDown;
 
+    private Rigidbody enemyRb;
+
     bool facingUp = true;
 
     Vector3 pos, localScale;
@@ -27,6 +29,7 @@ public class EnemyMovementUpDownSin : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        enemyRb = GetComponent<Rigidbody>();
         minUp = transform.position.y + maxHeight;
         minDown = transform.position.y - maxHeight;
         pos = transform.position;
@@ -62,22 +65,27 @@ public class EnemyMovementUpDownSin : MonoBehaviour
             facingUp = false;
         }
 
+        /*
         if (((facingUp) && (transform.rotation.x < 0)) || ((!facingUp) && (transform.rotation.x > 180)))
         {
             transform.Rotate(180, 0, 0, Space.Self);
         }
-
+        */
     }
 
     void MoveUp()
     {
-        pos += transform.up * Time.deltaTime * moveSpeed;
-        transform.position = pos + transform.right * Mathf.Sin(Time.time * frequency) * magnitude; 
+        pos += enemyRb.velocity = new Vector3(transform.position.x * Mathf.Sin(Time.time * frequency) * magnitude , moveSpeed * Time.deltaTime, transform.position.z);
+        transform.position = new Vector3(transform.position.x, pos.y, transform.position.z);
+        //pos += transform.up * Time.deltaTime * moveSpeed;
+        //transform.position = pos + transform.right; 
     }
 
     void MoveDown()
     {
-        pos -= transform.up * Time.deltaTime * moveSpeed;
-        transform.position = pos + transform.right * Mathf.Sin(Time.time * frequency) * magnitude;
+        pos -= enemyRb.velocity = new Vector3(transform.position.x * Mathf.Sin(Time.time * frequency) * magnitude, moveSpeed * Time.deltaTime, transform.position.z);
+        transform.position = new Vector3(transform.position.x, pos.y, transform.position.z);
+        //pos -= transform.up * Time.deltaTime * moveSpeed;
+        //transform.position = pos + transform.right;
     }
 }

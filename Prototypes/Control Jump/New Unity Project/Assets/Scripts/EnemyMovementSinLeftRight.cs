@@ -18,6 +18,8 @@ public class EnemyMovementSinLeftRight : MonoBehaviour
     private float minLeft;
     private float minRight;
 
+    private Rigidbody enemyRb;
+
     bool facingRight = true;
 
     Vector3 pos, localScale;
@@ -25,6 +27,7 @@ public class EnemyMovementSinLeftRight : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        enemyRb = GetComponent<Rigidbody>();
         minLeft = transform.position.x + maxWidth;
         minRight = transform.position.x - maxWidth;
         pos = transform.position;
@@ -60,24 +63,28 @@ public class EnemyMovementSinLeftRight : MonoBehaviour
         {
             facingRight = false;
         }
-
+        /*
         if (((facingRight) && (transform.rotation.y < 0)) || ((!facingRight) && (transform.rotation.y > 180)))
 
         {
             transform.Rotate(0, 180, 0, Space.Self);
         }
-
+        */
     }
 
     void MoveRight()
     {
-        pos += transform.right * Time.deltaTime * moveSpeed;
-        transform.position = pos + transform.up * Mathf.Sin(Time.time * frequency) * magnitude;
+        pos += enemyRb.velocity = new Vector3(moveSpeed * Time.deltaTime, transform.position.y * Mathf.Sin(Time.time * frequency) * magnitude, transform.position.z);
+        transform.position = new Vector3(pos.x, transform.position.y, transform.position.z);
+        //pos += transform.right * Time.deltaTime * moveSpeed;
+        //transform.position = pos + transform.up; 
     }
 
     void MoveLeft()
     {
-        pos -= transform.right * Time.deltaTime * moveSpeed;
-        transform.position = pos + transform.up * Mathf.Sin(Time.time * frequency) * magnitude;
+        pos -= enemyRb.velocity = new Vector3(moveSpeed * Time.deltaTime, transform.position.y * Mathf.Sin(Time.time * frequency) * magnitude, transform.position.z);
+        transform.position = new Vector3(pos.x, transform.position.y , transform.position.z);
+        //pos -= transform.right * Time.deltaTime * moveSpeed;
+        //transform.position = pos + transform.up; 
     }
 }

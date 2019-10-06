@@ -64,7 +64,7 @@ public class EnemyMovementLeftRight : MonoBehaviour
 
     void CheckWhereToFace()
     {
-        Debug.Log(facingRight);
+        //Debug.Log(facingRight);
         if (pos.x >= minRight)
         {
             facingRight = false;
