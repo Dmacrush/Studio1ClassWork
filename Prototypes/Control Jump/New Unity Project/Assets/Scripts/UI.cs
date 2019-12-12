@@ -12,6 +12,8 @@ public class UI : MonoBehaviour
     //public Text forwardForce;
     public Text scoreText;
 
+    public Text health;
+
     [SerializeField]
     private PlayerStats player;
     
@@ -46,6 +48,7 @@ public class UI : MonoBehaviour
 
         //angleBar.value = chargeJump.forwardForce;
         jumpPressureBar.value = chargeJump.jumpPressure;
-        
+
+        health.text = "Lives: " + player.lives.ToString("F0");
     }
 }

@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\Dylan Webb\.Rider2019.2\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\Dylan Webb\.Rider2019.2\system\resharper-host\local\Transient\ReSharperHost\v192\SolutionCaches\_New Unity Project.1114448494.00" t="ExcludeRecursive" />
+    <e p="C:\Users\Dylan Webb\Desktop\SAE Programer Work\Studio 1\Version Control\Studio1ClassWork\Prototypes\Control Jump\New Unity Project" t="IncludeRecursive">
+      <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
+      <e p="Assets" t="Include">
+        <e p="Scripts" t="Include">
+          <e p="AirBorne.cs" t="Include" />
+          <e p="CameraController.cs" t="Include" />
+          <e p="ChargeJump.cs" t="Include" />
+          <e p="Death.cs" t="Include" />
+          <e p="EnemyMovementLeftRight.cs" t="Include" />
+          <e p="EnemyMovementSinLeftRight.cs" t="Include" />
+          <e p="EnemyMovementUpDown.cs" t="Include" />
+          <e p="EnemyMovementUpDownSin.cs" t="Include" />
+          <e p="Ground.cs" t="Include" />
+          <e p="PlayerStateBase.cs" t="Include" />
+          <e p="PlayerStats.cs" t="Include" />
+          <e p="PUDistanceJump.cs" t="Include" />
+          <e p="PUExtraLife.cs" t="Include" />
+          <e p="PUIncreaseScoreMultiplier.cs" t="Include" />
+          <e p="Spawner.cs" t="Include" />
+          <e p="StartMenuUI.cs" t="Include" />
+          <e p="StateBase.cs" t="Include" />
+          <e p="StateManager.cs" t="Include" />
+          <e p="UI.cs" t="Include" />
+        </e>
+        <e p="TextMesh Pro" t="Include">
+          <e p="Fonts" t="Include">
+            <e p="LiberationSans - OFL.txt" t="Include" />
+          </e>
+          <e p="Resources" t="Include">
+            <e p="LineBreaking Following Characters.txt" t="Include" />
+            <e p="LineBreaking Leading Characters.txt" t="Include" />
+            <e p="Shaders" t="Include">
+              <e p="TMP_Bitmap-Custom-Atlas.shader" t="Include" />
+              <e p="TMP_Bitmap-Mobile.shader" t="Include" />
+              <e p="TMP_Bitmap.shader" t="Include" />
+              <e p="TMP_SDF Overlay.shader" t="Include" />
+              <e p="TMP_SDF-Mobile Masking.shader" t="Include" />
+              <e p="TMP_SDF-Mobile Overlay.shader" t="Include" />
+              <e p="TMP_SDF-Mobile.shader" t="Include" />
+              <e p="TMP_SDF-Surface-Mobile.shader" t="Include" />
+              <e p="TMP_SDF-Surface.shader" t="Include" />
+              <e p="TMP_SDF.shader" t="Include" />
+              <e p="TMP_Sprite.shader" t="Include" />
+              <e p="TMPro.cginc" t="Include" />
+              <e p="TMPro_Properties.cginc" t="Include" />
+              <e p="TMPro_Surface.cginc" t="Include" />
+            </e>
+          </e>
+          <e p="Sprites" t="Include">
+            <e p="EmojiOne Attribution.txt" t="Include" />
+          </e>
+        </e>
+      </e>
+      <e p="New Unity Project.sln" t="IncludeFlat" />
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="Packages" t="ExcludeRecursive" />
+      <e p="Temp\bin" t="ExcludeRecursive" />
+    </e>
+  </component>
+</project>

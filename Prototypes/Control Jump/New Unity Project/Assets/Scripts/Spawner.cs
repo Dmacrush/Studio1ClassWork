@@ -7,7 +7,9 @@ public class Spawner : MonoBehaviour
     public PlayerStats player;
     public GameObject[] EnemyPrefabs;
     public GameObject[] powerups;
-    public float enemySpawnTime, powerupTimer, resetPowerupTimer;
+    public float enemySpawnTime;
+    public float powerupTimer; 
+    public float resetPowerupTimer;
     public AirBorne airBorne;
 
     private StateManager stateManager;
